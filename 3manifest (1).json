@@ -1,0 +1,16 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Financial flow pro",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Financial flow pro",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "description": "Financial not paid incoming entry expensive loan re loan",
+  "lang": "en",
+  "categories": [
+    "utilities"
+  ]
+}
