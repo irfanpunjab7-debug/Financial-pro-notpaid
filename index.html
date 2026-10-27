@@ -113,31 +113,34 @@
 </head>
 <body class="p-3 md:p-6 relative">
 
-    <!-- APP LOCK SCREEN MODAL -->
-    <div id="app-lock-screen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/95 backdrop-blur-xl hidden">
-        <div class="glass-modal w-full max-w-sm rounded-2xl p-6 text-center space-y-4 shadow-2xl">
-            <div class="w-14 h-14 bg-indigo-500/20 text-indigo-400 rounded-full flex items-center justify-center mx-auto text-2xl border border-indigo-500/30">
-                <i class="fa-solid fa-lock"></i>
-            </div>
-            <div>
-                <h3 class="text-xl font-bold text-white">App Locked</h3>
-                <p class="text-xs text-slate-400 mt-1">اپنا 4 ہندسوں کا پن کوڈ درج کریں</p>
-            </div>
-            
-            <div class="space-y-3">
-                <input type="password" id="lock-pin-input" maxlength="4" placeholder="••••" class="w-full text-center glass-input px-3 py-3 rounded-xl text-xl tracking-widest font-bold">
-                <button onclick="verifyAppLock()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-2.5 rounded-xl text-xs font-semibold shadow-lg transition">
-                    انلاک کریں (Unlock)
-                </button>
-                <button onclick="setupNewPin()" class="text-[11px] text-slate-400 hover:text-indigo-300 underline block mx-auto">
-                    نیا پن کوڈ سیٹ کریں / تبدیل کریں
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- PULL TO REFRESH INDICATOR -->
     <div id="ptr-container">
         <div id="ptr-box" class="flex items-center gap-3 px-5 py-2.5 rounded-full text-xs font-semibold text-white">
             <div id="ptr-icon-wrap" class="w-6 h-6 flex items-center justify-center text-indigo-400 transition-transform duration-200">
-                <i id="ptr-icon" class="fa-solid fa-arrow-down
+                <i id="ptr-icon" class="fa-solid fa-arrow-down text-sm"></i>
+            </div>
+            <span id="ptr-text" class="tracking-wide">Pull to refresh...</span>
+        </div>
+    </div>
+
+    <!-- Ambient background lights -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10 space-y-6" id="dashboard-content">
+
+        <!-- HEADER -->
+        <header class="glass-card rounded-2xl p-4 md:p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-gradient-to-tr from-indigo-500 to-purple-500 p-3 rounded-xl shadow-lg">
+                    <i class="fa-solid me-0 fa-wallet text-2xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">FinanceFlow Pro</h1>
+                    <p class="text-xs md:text-sm text-slate-400">Your Personal Finance & Loan Dashboard</p>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3 w-full md:w-auto justify-end">
+                <div class="
