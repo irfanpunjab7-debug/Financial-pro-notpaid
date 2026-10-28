@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <link rel="manifest" href="./manifest.json">
@@ -9,8 +9,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Font Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- html2pdf.js for PDF export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
@@ -20,10 +20,7 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        darkBg: '#0f172a',
-                        cardBg: 'rgba(30, 41, 59, 0.7)',
+                        urdu: ['Noto Nastaliq Urdu', 'serif'],
                     }
                 }
             }
@@ -40,7 +37,6 @@
             touch-action: pan-y;
         }
 
-        /* Ambient Glow Background Orbs */
         .orb {
             position: fixed;
             border-radius: 50%;
@@ -49,11 +45,10 @@
             pointer-events: none;
             opacity: 0.4;
         }
-        .orb-1 { width: 350px; height: 350px; background: #6366f1; top: -50px; left: -50px; }
-        .orb-2 { width: 300px; height: 300px; background: #10b981; bottom: 5px; right: -50px; }
-        .orb-3 { width: 250px; height: 250px; background: #ec4899; top: 40%; left: 30%; }
+        .orb-1 { width: 350px; height: 350px; background: #6366f1; top: -50px; right: -50px; }
+        .orb-2 { width: 300px; height: 300px; background: #10b981; bottom: 5px; left: -50px; }
+        .orb-3 { width: 250px; height: 250px; background: #ec4899; top: 40%; right: 30%; }
 
-        /* Glassmorphism Styling */
         .glass-card {
             background: rgba(30, 41, 59, 0.65);
             backdrop-filter: blur(16px);
@@ -63,7 +58,7 @@
         }
 
         .glass-modal {
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -80,7 +75,6 @@
             box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
         }
 
-        /* Pull to Refresh Bar Styling */
         #ptr-container {
             position: fixed;
             top: -75px;
@@ -91,7 +85,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.2s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 0.2s ease;
+            transition: transform 0.2s ease, opacity 0.2s ease;
             pointer-events: none;
             opacity: 0;
         }
@@ -99,16 +93,12 @@
         #ptr-box {
             background: rgba(30, 41, 59, 0.85);
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(99, 102, 241, 0.2);
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.5); }
         ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.4); }
     </style>
 </head>
 <body class="p-3 md:p-6 relative">
@@ -119,7 +109,7 @@
             <div id="ptr-icon-wrap" class="w-6 h-6 flex items-center justify-center text-indigo-400 transition-transform duration-200">
                 <i id="ptr-icon" class="fa-solid fa-arrow-down text-sm"></i>
             </div>
-            <span id="ptr-text" class="tracking-wide">Pull to refresh...</span>
+            <span id="ptr-text">ریفریش کرنے کے لیے نیچے کھینچیں...</span>
         </div>
     </div>
 
@@ -134,13 +124,898 @@
         <header class="glass-card rounded-2xl p-4 md:p-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
                 <div class="bg-gradient-to-tr from-indigo-500 to-purple-500 p-3 rounded-xl shadow-lg">
-                    <i class="fa-solid me-0 fa-wallet text-2xl text-white"></i>
+                    <i class="fa-solid fa-wallet text-2xl text-white"></i>
                 </div>
                 <div>
                     <h1 class="text-2xl md:text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">FinanceFlow Pro</h1>
-                    <p class="text-xs md:text-sm text-slate-400">Your Personal Finance & Loan Dashboard</p>
+                    <p class="text-xs md:text-sm text-slate-400">پرسنل اکاؤنٹنگ، والیٹ اور لون منیجر</p>
                 </div>
             </div>
 
             <div class="flex flex-wrap items-center gap-3 w-full md:w-auto justify-end">
-                <div class="
+                <div class="flex items-center gap-2 bg-slate-800/80 px-3 py-1.5 rounded-xl border border-slate-700/50 text-xs text-slate-300">
+                    <i class="fa-solid fa-coins text-amber-400"></i>
+                    <span>Currency:</span>
+                    <select id="currency-select" onchange="updateCurrency(this.value)" class="bg-transparent text-white font-semibold focus:outline-none cursor-pointer">
+                        <option value="PKR" class="bg-slate-900">PKR (Rs)</option>
+                        <option value="INR" class="bg-slate-900">INR (₹)</option>
+                        <option value="USD" class="bg-slate-900">USD ($)</option>
+                        <option value="EUR" class="bg-slate-900">EUR (€)</option>
+                    </select>
+                </div>
+
+                <button onclick="openAccountModal()" class="flex-1 md:flex-none bg-purple-600 hover:bg-purple-500 text-white px-3.5 py-2 rounded-xl text-xs font-medium transition flex items-center justify-center gap-1.5 shadow-lg">
+                    <i class="fa-solid fa-plus-circle"></i> نیا اکاؤنٹ / والیٹ ایڈ کریں
+                </button>
+                <button onclick="openTransactionModal('income')" class="flex-1 md:flex-none bg-emerald-600 hover:bg-emerald-500 text-white px-3.5 py-2 rounded-xl text-xs font-medium transition flex items-center justify-center gap-1.5 shadow-lg">
+                    <i class="fa-solid fa-arrow-down"></i> آمدن (Income)
+                </button>
+                <button onclick="openTransactionModal('expense')" class="flex-1 md:flex-none bg-rose-600 hover:bg-rose-500 text-white px-3.5 py-2 rounded-xl text-xs font-medium transition flex items-center justify-center gap-1.5 shadow-lg">
+                    <i class="fa-solid fa-arrow-up"></i> خرچ (Expense)
+                </button>
+                <button onclick="openLoanModal()" class="flex-1 md:flex-none bg-indigo-600 hover:bg-indigo-500 text-white px-3.5 py-2 rounded-xl text-xs font-medium transition flex items-center justify-center gap-1.5 shadow-lg">
+                    <i class="fa-solid fa-hand-holding-dollar"></i> نیا قرضہ
+                </button>
+            </div>
+        </header>
+
+        <!-- SUMMARY CARDS OVERVIEW -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
+            <div class="glass-card p-4 rounded-2xl border-r-4 border-indigo-500">
+                <span class="text-xs font-medium text-slate-400">Total Balance</span>
+                <h3 id="total-balance" class="text-lg md:text-xl font-bold text-white">Rs0.00</h3>
+                <p class="text-[10px] text-slate-400 mt-1">تمام والٹس کی کل رقم</p>
+            </div>
+
+            <div class="glass-card p-4 rounded-2xl border-r-4 border-emerald-500">
+                <span class="text-xs font-medium text-slate-400">Total Income</span>
+                <h3 id="total-income" class="text-lg md:text-xl font-bold text-emerald-400">Rs0.00</h3>
+                <p class="text-[10px] text-slate-400 mt-1">کل وصول شدہ آمدن</p>
+            </div>
+
+            <div class="glass-card p-4 rounded-2xl border-r-4 border-rose-500">
+                <span class="text-xs font-medium text-slate-400">Total Expenses</span>
+                <h3 id="total-expenses" class="text-lg md:text-xl font-bold text-rose-400">Rs0.00</h3>
+                <p class="text-[10px] text-slate-400 mt-1">کل کیے گئے اخراجات</p>
+            </div>
+
+            <div class="glass-card p-4 rounded-2xl border-r-4 border-amber-500">
+                <span class="text-xs font-medium text-slate-400">Savings Rate</span>
+                <h3 id="savings-rate" class="text-lg md:text-xl font-bold text-amber-300">0.0%</h3>
+                <p class="text-[10px] text-slate-400 mt-1">بچت کی شرح</p>
+            </div>
+
+            <div class="glass-card p-4 rounded-2xl border-r-4 border-orange-500">
+                <span class="text-xs font-medium text-slate-400">قرضہ دینا ہے</span>
+                <h3 id="loan-payable" class="text-lg md:text-xl font-bold text-orange-400">Rs0.00</h3>
+                <p class="text-[10px] text-slate-400 mt-1">Borrowed Payable</p>
+            </div>
+
+            <div class="glass-card p-4 rounded-2xl border-r-4 border-cyan-500">
+                <span class="text-xs font-medium text-slate-400">قرضہ ملنا ہے</span>
+                <h3 id="loan-receivable" class="text-lg md:text-xl font-bold text-cyan-400">Rs0.00</h3>
+                <p class="text-[10px] text-slate-400 mt-1">Given Receivable</p>
+            </div>
+        </div>
+
+        <!-- ACCOUNTS / WALLETS SECTION -->
+        <div class="glass-card p-5 rounded-2xl space-y-3">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="font-semibold text-white text-base">آپ کے تمام اکاؤنٹس اور والٹس (Custom Accounts)</h3>
+                    <p class="text-xs text-slate-400">اپنی مرضی کے اکاؤنٹس بنائیں اور ان میں رقم کا حساب رکھیں</p>
+                </div>
+                <button onclick="openAccountModal()" class="bg-purple-600/30 hover:bg-purple-600/50 border border-purple-500/40 text-purple-200 px-3 py-1.5 rounded-xl text-xs font-medium transition flex items-center gap-1">
+                    <i class="fa-solid fa-plus text-[10px]"></i> ایڈ نیا اکاونٹ
+                </button>
+            </div>
+
+            <div id="accounts-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <!-- Dynamic Accounts rendered here -->
+            </div>
+        </div>
+
+        <!-- MAIN TRANSACTIONS & LOANS GRID -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+            <!-- LOAN MANAGER -->
+            <div class="lg:col-span-5 glass-card p-5 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-semibold text-white text-base flex items-center gap-2">
+                            <i class="fa-solid fa-hand-holding-dollar text-indigo-400"></i>
+                            قرضہ جات (Loan Manager)
+                        </h3>
+                        <button onclick="openLoanModal()" class="bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-500/40 text-indigo-200 px-3 py-1.5 rounded-xl text-xs font-medium transition">
+                            <i class="fa-solid fa-plus text-[10px]"></i> نیا قرضہ
+                        </button>
+                    </div>
+
+                    <div id="loan-list" class="space-y-3 max-h-[460px] overflow-y-auto pl-1">
+                        <!-- Loan items -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- RECENT TRANSACTIONS TABLE -->
+            <div class="lg:col-span-7 glass-card p-5 rounded-2xl">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
+                    <div>
+                        <h3 class="font-semibold text-white text-base">حالیہ لین دین (Transactions)</h3>
+                        <p class="text-xs text-slate-400">کون سا پیسہ کہاں سے آیا اور کہاں لگا</p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+                        <input type="text" id="search-input" onkeyup="filterTransactions()" placeholder="تلاش کریں..." class="glass-input text-xs px-3 py-1.5 rounded-xl flex-1 sm:w-36">
+                        <button onclick="exportCSV()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-2.5 py-1.5 rounded-xl text-xs font-medium">CSV</button>
+                        <button onclick="exportPDF()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-2.5 py-1.5 rounded-xl text-xs font-medium">PDF</button>
+                        <button onclick="openResetModal()" class="bg-rose-950/60 hover:bg-rose-900 border border-rose-800/50 text-rose-300 px-2.5 py-1.5 rounded-xl text-xs font-medium">ریسیٹ</button>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto max-h-[460px] overflow-y-auto">
+                    <table class="w-full text-right text-xs text-slate-300">
+                        <thead class="text-slate-400 border-b border-slate-700/60 bg-slate-900/40 sticky top-0 backdrop-blur-md">
+                            <tr>
+                                <th class="p-2.5">تفصیل</th>
+                                <th class="p-2.5">اکاؤنٹ / والیٹ</th>
+                                <th class="p-2.5">کیٹیگری</th>
+                                <th class="p-2.5">تاریخ</th>
+                                <th class="p-2.5 text-left">رقم</th>
+                                <th class="p-2.5 text-center">ایکشن</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transaction-list-body" class="divide-y divide-slate-800/60">
+                            <!-- Dynamic Transactions -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ADD ACCOUNT MODAL -->
+    <div id="account-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
+        <div class="glass-modal w-full max-w-md rounded-2xl p-6 relative shadow-2xl">
+            <button onclick="closeAccountModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <h3 class="text-lg font-bold text-white mb-4">نیا اکاؤنٹ / والیٹ شامل کریں</h3>
+            
+            <form onsubmit="handleAccountSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">اکاؤنٹ یا والیٹ کا نام (مثلاً Cash, EasyPaisa, Bank)</label>
+                    <input type="text" id="acc-name" required placeholder="مثلاً: Personal Bank, Cash, My Wallet..." class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">ابتدائی رقم (Deposit Amount / Balance)</label>
+                    <input type="number" step="0.01" id="acc-balance" required placeholder="0.00" class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeAccountModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:bg-slate-800">منسوخ کریں</button>
+                    <button type="submit" class="px-5 py-2 rounded-xl text-xs font-semibold bg-purple-600 hover:bg-purple-500 text-white shadow-lg">اکاؤنٹ محفوظ کریں</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- TRANSACTION MODAL (Income / Expense) -->
+    <div id="tx-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
+        <div class="glass-modal w-full max-w-md rounded-2xl p-6 relative shadow-2xl">
+            <button onclick="closeTransactionModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <h3 id="tx-modal-title" class="text-lg font-bold text-white mb-4">لین دین کا اندراج</h3>
+            
+            <form id="tx-form" onsubmit="handleTransactionSubmit(event)" class="space-y-4">
+                <input type="hidden" id="tx-id">
+                
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">لین دین کی قسم</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button type="button" id="tx-type-income-btn" onclick="setTxModalType('income')" class="py-2 rounded-xl text-xs font-semibold border transition border-emerald-500 bg-emerald-500/20 text-emerald-300">
+                            آمدن (Income)
+                        </button>
+                        <button type="button" id="tx-type-expense-btn" onclick="setTxModalType('expense')" class="py-2 rounded-xl text-xs font-semibold border transition border-slate-700 text-slate-400">
+                            خرچ (Expense)
+                        </button>
+                    </div>
+                    <input type="hidden" id="tx-type" value="income">
+                </div>
+
+                <div>
+                    <label id="account-select-label" class="block text-xs font-medium text-slate-300 mb-1">کس اکاؤنٹ / والیٹ سے؟ (پیسے کہاں آئے / کہاں سے لگے)</label>
+                    <select id="tx-account" required class="w-full glass-input px-3 py-2 rounded-xl text-sm text-white">
+                        <!-- Dynamic Account Options -->
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">رقم (Amount)</label>
+                    <input type="number" step="0.01" id="tx-amount" required placeholder="0.00" class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">تفصیل (پیسے کہاں سے آئے یا کہاں لگے)</label>
+                    <input type="text" id="tx-desc" required placeholder="مثلاً: تنخواہ، راشن، پٹرول، بل..." class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">کیٹیگری</label>
+                    <select id="tx-category" class="w-full glass-input px-3 py-2 rounded-xl text-sm text-white">
+                        <option value="Food & Dining" class="bg-slate-900">خوراک و کھانا</option>
+                        <option value="Bills & Utilities" class="bg-slate-900">یوٹیلیٹی بلز</option>
+                        <option value="Shopping" class="bg-slate-900">شاپنگ</option>
+                        <option value="Transport & Fuel" class="bg-slate-900">سفر و پٹرول</option>
+                        <option value="Salary / Earnings" class="bg-slate-900">تنخواہ / آمدن</option>
+                        <option value="Other / General" class="bg-slate-900" selected>دیگر / عام</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">تاریخ</label>
+                    <input type="date" id="tx-date" required class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeTransactionModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:bg-slate-800">منسوخ</button>
+                    <button type="submit" class="px-5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg">محفوظ کریں</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- LOAN MODAL -->
+    <div id="loan-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
+        <div class="glass-modal w-full max-w-md rounded-2xl p-6 relative shadow-2xl">
+            <button onclick="closeLoanModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <h3 id="loan-modal-title" class="text-lg font-bold text-white mb-4">قرض کا اندراج</h3>
+            
+            <form id="loan-form" onsubmit="handleLoanSubmit(event)" class="space-y-4">
+                <input type="hidden" id="loan-id">
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">قرض کی قسم</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button type="button" id="loan-type-borrowed-btn" onclick="setLoanModalType('borrowed')" class="py-2 rounded-xl text-xs font-semibold border transition border-orange-500 bg-orange-500/20 text-orange-300">
+                            قرض لیا (Borrowed)
+                        </button>
+                        <button type="button" id="loan-type-given-btn" onclick="setLoanModalType('given')" class="py-2 rounded-xl text-xs font-semibold border transition border-slate-700 text-slate-400">
+                            قرض دیا (Given)
+                        </button>
+                    </div>
+                    <input type="hidden" id="loan-type" value="borrowed">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">شخص کا نام (کس سے لیا / کسے دیا)</label>
+                    <input type="text" id="loan-person" required placeholder="مثلاً: علی احمد، بینک..." class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">کل رقم</label>
+                    <input type="number" step="0.01" id="loan-amount" required placeholder="0.00" class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">تاریخ</label>
+                    <input type="date" id="loan-date" required class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">تفصیل / نوٹس</label>
+                    <input type="text" id="loan-note" placeholder="اختیاری تفصیل..." class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeLoanModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:bg-slate-800">منسوخ</button>
+                    <button type="submit" class="px-5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg">قرض محفوظ کریں</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- REPAYMENT MODAL -->
+    <div id="repay-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
+        <div class="glass-modal w-full max-w-sm rounded-2xl p-6 relative shadow-2xl">
+            <button onclick="closeRepayModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <h3 class="text-lg font-bold text-white mb-1">قرض کی ادائیگی درج کریں</h3>
+            <p id="repay-subtitle" class="text-xs text-slate-400 mb-4">ادائیگی یا وصولی درج کریں</p>
+            
+            <form onsubmit="handleRepaySubmit(event)" class="space-y-4">
+                <input type="hidden" id="repay-loan-id">
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">ادائیگی کی رقم</label>
+                    <input type="number" step="0.01" id="repay-amount" required placeholder="0.00" class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                    <p id="repay-max-hint" class="text-[10px] text-slate-400 mt-1">باقی رقم: Rs0.00</p>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">کس اکاؤنٹ / والیٹ سے ادائیگی کی؟</label>
+                    <select id="repay-account" required class="w-full glass-input px-3 py-2 rounded-xl text-sm text-white">
+                        <!-- Dynamic Account Options -->
+                    </select>
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeRepayModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:bg-slate-800">منسوخ</button>
+                    <button type="submit" class="px-5 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg">ادائیگی کی تصدیق کریں</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- RESET CONFIRMATION MODAL -->
+    <div id="reset-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
+        <div class="glass-modal w-full max-w-sm rounded-2xl p-6 text-center space-y-4">
+            <div class="w-12 h-12 bg-rose-500/20 text-rose-400 rounded-full flex items-center justify-center mx-auto text-xl border border-rose-500/30">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">تمام ڈیٹا ری سیٹ کریں؟</h3>
+            <p class="text-xs text-slate-300">اس سے آپ کے تمام اکاؤنٹس، آمدن، اخراجات اور قرضے پاک ہو جائیں گے۔</p>
+            <div class="flex gap-2 justify-center pt-2">
+                <button onclick="closeResetModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 bg-slate-800 hover:bg-slate-700">منسوخ</button>
+                <button onclick="confirmResetAll()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-rose-600 hover:bg-rose-500 text-white">ہاں، سب ختم کریں</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- APPLICATION LOGIC JS -->
+    <script>
+        let state = {
+            currency: 'PKR',
+            accounts: [],
+            transactions: [],
+            loans: []
+        };
+
+        const CURRENCY_SYMBOLS = {
+            PKR: 'Rs',
+            INR: '₹',
+            USD: '$',
+            EUR: '€'
+        };
+
+        window.onload = function() {
+            loadFromLocalStorage();
+            updateUI();
+            initPullToRefresh();
+            
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('tx-date').value = today;
+            document.getElementById('loan-date').value = today;
+        };
+
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('financeflow_pro_data');
+            if (saved) {
+                try {
+                    state = JSON.parse(saved);
+                } catch(e) {
+                    console.error("Storage corrupt", e);
+                }
+            }
+        }
+
+        function saveToLocalStorage() {
+            localStorage.setItem('financeflow_pro_data', JSON.stringify(state));
+        }
+
+        function formatCurr(amount) {
+            const sym = CURRENCY_SYMBOLS[state.currency] || 'Rs';
+            return `${sym}${parseFloat(amount || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+
+        function updateCurrency(val) {
+            state.currency = val;
+            saveToLocalStorage();
+            updateUI();
+        }
+
+        function updateUI() {
+            document.getElementById('currency-select').value = state.currency;
+
+            let totalIncome = 0;
+            let totalExpense = 0;
+
+            state.transactions.forEach(t => {
+                if (t.type === 'income') totalIncome += t.amount;
+                if (t.type === 'expense') totalExpense += t.amount;
+            });
+
+            // Calculate total balance from all accounts
+            let totalBalance = state.accounts.reduce((sum, acc) => sum + (acc.balance || 0), 0);
+
+            const savingsRate = totalIncome > 0 ? Math.max(0, ((totalIncome - totalExpense) / totalIncome) * 100) : 0;
+
+            let loanPayable = 0;
+            let loanReceivable = 0;
+
+            state.loans.forEach(l => {
+                const remaining = Math.max(0, l.amount - (l.repaid || 0));
+                if (l.type === 'borrowed') {
+                    loanPayable += remaining;
+                } else {
+                    loanReceivable += remaining;
+                }
+            });
+
+            document.getElementById('total-balance').innerText = formatCurr(totalBalance);
+            document.getElementById('total-income').innerText = formatCurr(totalIncome);
+            document.getElementById('total-expenses').innerText = formatCurr(totalExpense);
+            document.getElementById('savings-rate').innerText = `${savingsRate.toFixed(1)}%`;
+            document.getElementById('loan-payable').innerText = formatCurr(loanPayable);
+            document.getElementById('loan-receivable').innerText = formatCurr(loanReceivable);
+
+            renderAccountsGrid();
+            renderLoanList();
+            renderTransactionList();
+        }
+
+        // ACCOUNTS / WALLETS MANAGEMENT
+        function openAccountModal() {
+            document.getElementById('acc-name').value = '';
+            document.getElementById('acc-balance').value = '';
+            document.getElementById('account-modal').classList.remove('hidden');
+        }
+
+        function closeAccountModal() {
+            document.getElementById('account-modal').classList.add('hidden');
+        }
+
+        function handleAccountSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('acc-name').value.trim();
+            const balance = parseFloat(document.getElementById('acc-balance').value) || 0;
+
+            if (!name) return;
+
+            const newAcc = {
+                id: Date.now().toString(),
+                name: name,
+                balance: balance
+            };
+
+            state.accounts.push(newAcc);
+            saveToLocalStorage();
+            updateUI();
+            closeAccountModal();
+        }
+
+        function deleteAccount(id) {
+            state.accounts = state.accounts.filter(a => a.id !== id);
+            saveToLocalStorage();
+            updateUI();
+        }
+
+        function renderAccountsGrid() {
+            const grid = document.getElementById('accounts-grid');
+            if (!state.accounts || state.accounts.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-6 text-slate-500">
+                        <p class="text-xs">کوئی اکاؤنٹ یا والیٹ موجود نہیں ہے۔ نیا ایڈ کریں۔</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = state.accounts.map(acc => `
+                <div class="glass-card p-3 rounded-xl flex justify-between items-center border border-slate-700/50">
+                    <div>
+                        <h4 class="font-bold text-sm text-white">${acc.name}</h4>
+                        <p class="text-xs font-semibold text-emerald-400 mt-0.5">${formatCurr(acc.balance)}</p>
+                    </div>
+                    <button onclick="deleteAccount('${acc.id}')" class="text-slate-500 hover:text-rose-400 p-1 text-xs" title="حذف کریں">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function populateAccountSelect(selectId) {
+            const select = document.getElementById(selectId);
+            if (!state.accounts || state.accounts.length === 0) {
+                select.innerHTML = `<option value="">کوئی اکاؤنٹ نہیں ہے! پہلے نیا اکاؤنٹ بنائیں</option>`;
+                return;
+            }
+
+            select.innerHTML = state.accounts.map(acc => `
+                <option value="${acc.id}" class="bg-slate-900">${acc.name} (${formatCurr(acc.balance)})</option>
+            `).join('');
+        }
+
+        // TRANSACTION MODAL LOGIC
+        function openTransactionModal(type = 'income') {
+            if (!state.accounts || state.accounts.length === 0) {
+                alert("براہ کرم پہلے کم از کم ایک اکاؤنٹ یا والیٹ ایڈ کریں!");
+                openAccountModal();
+                return;
+            }
+
+            document.getElementById('tx-id').value = '';
+            document.getElementById('tx-amount').value = '';
+            document.getElementById('tx-desc').value = '';
+            document.getElementById('tx-modal-title').innerText = type === 'income' ? 'آمدن کا اندراج (Where did money come from?)' : 'خرچ کا اندراج (Where did money go?)';
+            
+            populateAccountSelect('tx-account');
+            setTxModalType(type);
+            document.getElementById('tx-modal').classList.remove('hidden');
+        }
+
+        function closeTransactionModal() {
+            document.getElementById('tx-modal').classList.add('hidden');
+        }
+
+        function setTxModalType(type) {
+            document.getElementById('tx-type').value = type;
+            const incBtn = document.getElementById('tx-type-income-btn');
+            const expBtn = document.getElementById('tx-type-expense-btn');
+
+            if (type === 'income') {
+                incBtn.className = 'py-2 rounded-xl text-xs font-semibold border transition border-emerald-500 bg-emerald-500/20 text-emerald-300';
+                expBtn.className = 'py-2 rounded-xl text-xs font-semibold border transition border-slate-700 text-slate-400';
+                document.getElementById('account-select-label').innerText = 'کس اکاؤنٹ / والیٹ میں پیسے جمع ہوئے؟';
+            } else {
+                expBtn.className = 'py-2 rounded-xl text-xs font-semibold border transition border-rose-500 bg-rose-500/20 text-rose-300';
+                incBtn.className = 'py-2 rounded-xl text-xs font-semibold border transition border-slate-700 text-slate-400';
+                document.getElementById('account-select-label').innerText = 'کس اکاؤنٹ / والیٹ سے پیسے خرچ ہوئے؟';
+            }
+        }
+
+        function handleTransactionSubmit(e) {
+            e.preventDefault();
+            const id = document.getElementById('tx-id').value || Date.now().toString();
+            const type = document.getElementById('tx-type').value;
+            const accountId = document.getElementById('tx-account').value;
+            const amount = parseFloat(document.getElementById('tx-amount').value) || 0;
+            const desc = document.getElementById('tx-desc').value.trim();
+            const category = document.getElementById('tx-category').value;
+            const date = document.getElementById('tx-date').value;
+
+            const account = state.accounts.find(a => a.id === accountId);
+            if (!account) {
+                alert("براہ کرم صحیح اکاؤنٹ کا انتخاب کریں!");
+                return;
+            }
+
+            // Adjust account balance
+            if (type === 'income') {
+                account.balance += amount;
+            } else {
+                account.balance -= amount;
+            }
+
+            const item = { id, type, accountId, accountName: account.name, amount, desc, category, date };
+            state.transactions.unshift(item);
+
+            saveToLocalStorage();
+            updateUI();
+            closeTransactionModal();
+        }
+
+        function renderTransactionList() {
+            const body = document.getElementById('transaction-list-body');
+            const searchVal = (document.getElementById('search-input').value || '').toLowerCase();
+
+            const filtered = state.transactions.filter(t => 
+                t.desc.toLowerCase().includes(searchVal) || 
+                (t.accountName && t.accountName.toLowerCase().includes(searchVal)) ||
+                t.category.toLowerCase().includes(searchVal)
+            );
+
+            if (filtered.length === 0) {
+                body.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="text-center py-8 text-slate-500">
+                            <p class="text-xs">کوئی لین دین کا ریکارڈ موجود نہیں ہے</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            body.innerHTML = filtered.map(t => {
+                const isInc = t.type === 'income';
+                const amtClass = isInc ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
+                const sign = isInc ? '+' : '-';
+
+                return `
+                    <tr class="hover:bg-slate-800/40 transition">
+                        <td class="p-2.5 font-medium text-white">${t.desc}</td>
+                        <td class="p-2.5 text-slate-300"><span class="bg-slate-800 px-2 py-0.5 rounded border border-slate-700">${t.accountName || 'عام'}</span></td>
+                        <td class="p-2.5 text-slate-400">${t.category}</td>
+                        <td class="p-2.5 text-slate-400 text-[11px]">${t.date}</td>
+                        <td class="p-2.5 text-left ${amtClass}">${sign}${formatCurr(t.amount)}</td>
+                        <td class="p-2.5 text-center">
+                            <button onclick="deleteTransaction('${t.id}')" class="p-1 text-slate-400 hover:text-rose-400">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function filterTransactions() {
+            renderTransactionList();
+        }
+
+        function deleteTransaction(id) {
+            const tx = state.transactions.find(t => t.id === id);
+            if (tx && tx.accountId) {
+                const acc = state.accounts.find(a => a.id === tx.accountId);
+                if (acc) {
+                    // Revert balance
+                    if (tx.type === 'income') acc.balance -= tx.amount;
+                    else acc.balance += tx.amount;
+                }
+            }
+            state.transactions = state.transactions.filter(t => t.id !== id);
+            saveToLocalStorage();
+            updateUI();
+        }
+
+        // LOAN MANAGEMENT
+        function openLoanModal() {
+            document.getElementById('loan-id').value = '';
+            document.getElementById('loan-person').value = '';
+            document.getElementById('loan-amount').value = '';
+            document.getElementById('loan-note').value = '';
+            setLoanModalType('borrowed');
+            document.getElementById('loan-modal').classList.remove('hidden');
+        }
+
+        function closeLoanModal() {
+            document.getElementById('loan-modal').classList.add('hidden');
+        }
+
+        function setLoanModalType(type) {
+            document.getElementById('loan-type').value = type;
+            const borBtn = document.getElementById('loan-type-borrowed-btn');
+            const givBtn = document.getElementById('loan-type-given-btn');
+
+            if (type === 'borrowed') {
+                borBtn.className = 'py-2 rounded-xl text-xs font-semibold border transition border-orange-500 bg-orange-500/20 text-orange-300';
+                givBtn.className = 'py-2 rounded-xl text-xs font-semibold border transition border-slate-700 text-slate-400';
+            } else {
+                givBtn.className = 'py-2 rounded-xl text-xs font-semibold border transition border-cyan-500 bg-cyan-500/20 text-cyan-300';
+                borBtn.className = 'py-2 rounded-xl text-xs font-semibold border transition border-slate-700 text-slate-400';
+            }
+        }
+
+        function handleLoanSubmit(e) {
+            e.preventDefault();
+            const id = document.getElementById('loan-id').value || Date.now().toString();
+            const type = document.getElementById('loan-type').value;
+            const person = document.getElementById('loan-person').value.trim();
+            const amount = parseFloat(document.getElementById('loan-amount').value) || 0;
+            const date = document.getElementById('loan-date').value;
+            const note = document.getElementById('loan-note').value.trim();
+
+            const loanObj = { id, type, person, amount, repaid: 0, date, note };
+            state.loans.unshift(loanObj);
+
+            saveToLocalStorage();
+            updateUI();
+            closeLoanModal();
+        }
+
+        function renderLoanList() {
+            const container = document.getElementById('loan-list');
+            if (state.loans.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-8 text-slate-500">
+                        <p class="text-xs">کوئی قرض کا ریکارڈ موجود نہیں ہے</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = state.loans.map(loan => {
+                const repaid = loan.repaid || 0;
+                const remaining = Math.max(0, loan.amount - repaid);
+                const isBorrowed = loan.type === 'borrowed';
+                const badgeClass = isBorrowed ? 'bg-orange-500/20 text-orange-300 border-orange-500/30' : 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30';
+                const typeText = isBorrowed ? 'قرض لیا (Borrowed)' : 'قرض دیا (Given)';
+
+                return `
+                    <div class="glass-card p-3.5 rounded-xl border border-slate-700/50 space-y-2">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="px-2 py-0.5 text-[10px] rounded-md font-semibold border ${badgeClass}">${typeText}</span>
+                                <h4 class="font-bold text-sm text-white mt-1">${loan.person}</h4>
+                                <p class="text-[10px] text-slate-400">${loan.date} ${loan.note ? '• ' + loan.note : ''}</p>
+                            </div>
+                            <button onclick="deleteLoan('${loan.id}')" class="text-slate-400 hover:text-rose-400 p-1 text-xs">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-1 bg-slate-900/40 p-2 rounded-lg text-center text-xs">
+                            <div>
+                                <span class="text-[10px] text-slate-400 block">کل رقم</span>
+                                <span class="font-semibold text-white">${formatCurr(loan.amount)}</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-slate-400 block">ادائیگی</span>
+                                <span class="font-semibold text-emerald-400">${formatCurr(repaid)}</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-slate-400 block">باقی رقم</span>
+                                <span class="font-semibold ${remaining > 0 ? 'text-amber-400' : 'text-slate-400'}">${formatCurr(remaining)}</span>
+                            </div>
+                        </div>
+
+                        ${remaining > 0 ? `
+                            <button onclick="openRepayModal('${loan.id}')" class="w-full text-xs bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-300 border border-emerald-500/30 py-1.5 rounded-md transition font-medium">
+                                ادائیگی درج کریں
+                            </button>
+                        ` : '<div class="text-emerald-400 text-xs text-center font-semibold"><i class="fa-solid fa-circle-check"></i> مکمل ادا ہو گیا</div>'}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function deleteLoan(id) {
+            state.loans = state.loans.filter(l => l.id !== id);
+            saveToLocalStorage();
+            updateUI();
+        }
+
+        // REPAYMENT LOGIC
+        function openRepayModal(loanId) {
+            if (!state.accounts || state.accounts.length === 0) {
+                alert("براہ کرم پہلے کم از کم ایک اکاؤنٹ ایڈ کریں!");
+                openAccountModal();
+                return;
+            }
+
+            const loan = state.loans.find(l => l.id === loanId);
+            if (!loan) return;
+
+            const remaining = Math.max(0, loan.amount - (loan.repaid || 0));
+            document.getElementById('repay-loan-id').value = loan.id;
+            document.getElementById('repay-amount').value = '';
+            document.getElementById('repay-amount').max = remaining;
+            document.getElementById('repay-subtitle').innerText = `${loan.person} کے لیے ادائیگی درج کریں`;
+            document.getElementById('repay-max-hint').innerText = `باقی رقم: ${formatCurr(remaining)}`;
+
+            populateAccountSelect('repay-account');
+            document.getElementById('repay-modal').classList.remove('hidden');
+        }
+
+        function closeRepayModal() {
+            document.getElementById('repay-modal').classList.add('hidden');
+        }
+
+        function handleRepaySubmit(e) {
+            e.preventDefault();
+            const loanId = document.getElementById('repay-loan-id').value;
+            const repayAmt = parseFloat(document.getElementById('repay-amount').value) || 0;
+            const accountId = document.getElementById('repay-account').value;
+
+            const loan = state.loans.find(l => l.id === loanId);
+            const account = state.accounts.find(a => a.id === accountId);
+
+            if (!loan || !account || repayAmt <= 0) return;
+
+            loan.repaid = (loan.repaid || 0) + repayAmt;
+
+            // Automatically update account balance and add transaction record
+            const isBorrowed = loan.type === 'borrowed';
+            if (isBorrowed) {
+                account.balance -= repayAmt; // Repaying borrowed loan reduces account balance
+            } else {
+                account.balance += repayAmt; // Receiving given loan increases account balance
+            }
+
+            const today = new Date().toISOString().split('T')[0];
+            state.transactions.unshift({
+                id: Date.now().toString(),
+                type: isBorrowed ? 'expense' : 'income',
+                accountId: account.id,
+                accountName: account.name,
+                amount: repayAmt,
+                desc: `${isBorrowed ? 'قرض کی ادائیگی بحساب' : 'قرض کی وصولی از'}: ${loan.person}`,
+                category: 'دیگر / عام',
+                date: today
+            });
+
+            saveToLocalStorage();
+            updateUI();
+            closeRepayModal();
+        }
+
+        // EXPORTS & RESET
+        function exportCSV() {
+            if (state.transactions.length === 0) {
+                alert("کوئی لین دین موجود نہیں ہے!");
+                return;
+            }
+            let csvContent = "data:text/csv;charset=utf-8,ID,Type,Account,Amount,Description,Category,Date\n";
+            state.transactions.forEach(t => {
+                csvContent += `"${t.id}","${t.type}","${t.accountName || ''}","${t.amount}","${t.desc.replace(/"/g, '""')}","${t.category}","${t.date}"\n`;
+            });
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `FinanceFlow_Report_${new Date().toISOString().split('T')[0]}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function exportPDF() {
+            const element = document.getElementById('dashboard-content');
+            const opt = {
+                margin:       0.3,
+                filename:     `FinanceFlow_Report_${new Date().toISOString().split('T')[0]}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, backgroundColor: '#0b0f19' },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+
+        function openResetModal() {
+            document.getElementById('reset-modal').classList.remove('hidden');
+        }
+
+        function closeResetModal() {
+            document.getElementById('reset-modal').classList.add('hidden');
+        }
+
+        function confirmResetAll() {
+            state = {
+                currency: 'PKR',
+                accounts: [],
+                transactions: [],
+                loans: []
+            };
+            saveToLocalStorage();
+            updateUI();
+            closeResetModal();
+        }
+
+        function initPullToRefresh() {
+            const ptrContainer = document.getElementById('ptr-container');
+            let startY = 0, currentY = 0, isPulling = false, isRefreshing = false;
+
+            window.addEventListener('touchstart', (e) => {
+                if (window.scrollY === 0 && !isRefreshing) {
+                    startY = e.touches[0].clientY;
+                    isPulling = true;
+                }
+            }, { passive: true });
+
+            window.addEventListener('touchmove', (e) => {
+                if (!isPulling || isRefreshing) return;
+                currentY = e.touches[0].clientY;
+                const distance = currentY - startY;
+
+                if (distance > 0 && window.scrollY === 0) {
+                    const pullDistance = Math.min(distance * 0.45, 95);
+                    ptrContainer.style.opacity = '1';
+                    ptrContainer.style.transform = `translateY(${pullDistance + 75}px)`;
+                }
+            }, { passive: true });
+
+            window.addEventListener('touchend', () => {
+                if (!isPulling || isRefreshing) return;
+                ptrContainer.style.opacity = '0';
+                ptrContainer.style.transform = `translateY(0px)`;
+                isPulling = false;
+            });
+        }
+    </script>
+</body>
+</html>
