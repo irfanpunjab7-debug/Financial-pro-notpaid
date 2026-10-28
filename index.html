@@ -137,10 +137,11 @@
                     <i class="fa-solid fa-coins text-amber-400"></i>
                     <span>Currency:</span>
                     <select id="currency-select" onchange="updateCurrency(this.value)" class="bg-transparent text-white font-semibold focus:outline-none cursor-pointer">
-                        <option value="PKR" class="bg-slate-900">PKR (Rs)</option>
+                        <option value="PKR" class="bg-slate-900">PKR (₨)</option>
                         <option value="INR" class="bg-slate-900">INR (₹)</option>
                         <option value="USD" class="bg-slate-900">USD ($)</option>
                         <option value="EUR" class="bg-slate-900">EUR (€)</option>
+                        <option value="GBP" class="bg-slate-900">GBP (£)</option>
                     </select>
                 </div>
 
@@ -148,13 +149,13 @@
                     <i class="fa-solid fa-plus-circle"></i> نیا اکاؤنٹ / والیٹ ایڈ کریں
                 </button>
                 <button onclick="openTransactionModal('income')" class="flex-1 md:flex-none bg-emerald-600 hover:bg-emerald-500 text-white px-3.5 py-2 rounded-xl text-xs font-medium transition flex items-center justify-center gap-1.5 shadow-lg">
-                    <i class="fa-solid fa-arrow-down"></i> آمدن (Income)
+                    <i class="fa-solid fa-arrow-down"></i> Income (آمدن)
                 </button>
                 <button onclick="openTransactionModal('expense')" class="flex-1 md:flex-none bg-rose-600 hover:bg-rose-500 text-white px-3.5 py-2 rounded-xl text-xs font-medium transition flex items-center justify-center gap-1.5 shadow-lg">
-                    <i class="fa-solid fa-arrow-up"></i> خرچ (Expense)
+                    <i class="fa-solid fa-arrow-up"></i> Expense (خرچ)
                 </button>
                 <button onclick="openLoanModal()" class="flex-1 md:flex-none bg-indigo-600 hover:bg-indigo-500 text-white px-3.5 py-2 rounded-xl text-xs font-medium transition flex items-center justify-center gap-1.5 shadow-lg">
-                    <i class="fa-solid fa-hand-holding-dollar"></i> نیا قرضہ
+                    <i class="fa-solid fa-hand-holding-dollar"></i> New Loan
                 </button>
             </div>
         </header>
@@ -163,19 +164,19 @@
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
             <div class="glass-card p-4 rounded-2xl border-r-4 border-indigo-500">
                 <span class="text-xs font-medium text-slate-400">Total Balance</span>
-                <h3 id="total-balance" class="text-lg md:text-xl font-bold text-white">Rs0.00</h3>
+                <h3 id="total-balance" class="text-lg md:text-xl font-bold text-white">₨0.00</h3>
                 <p class="text-[10px] text-slate-400 mt-1">تمام والٹس کی کل رقم</p>
             </div>
 
             <div class="glass-card p-4 rounded-2xl border-r-4 border-emerald-500">
                 <span class="text-xs font-medium text-slate-400">Total Income</span>
-                <h3 id="total-income" class="text-lg md:text-xl font-bold text-emerald-400">Rs0.00</h3>
+                <h3 id="total-income" class="text-lg md:text-xl font-bold text-emerald-400">₨0.00</h3>
                 <p class="text-[10px] text-slate-400 mt-1">کل وصول شدہ آمدن</p>
             </div>
 
             <div class="glass-card p-4 rounded-2xl border-r-4 border-rose-500">
                 <span class="text-xs font-medium text-slate-400">Total Expenses</span>
-                <h3 id="total-expenses" class="text-lg md:text-xl font-bold text-rose-400">Rs0.00</h3>
+                <h3 id="total-expenses" class="text-lg md:text-xl font-bold text-rose-400">₨0.00</h3>
                 <p class="text-[10px] text-slate-400 mt-1">کل کیے گئے اخراجات</p>
             </div>
 
@@ -187,13 +188,13 @@
 
             <div class="glass-card p-4 rounded-2xl border-r-4 border-orange-500">
                 <span class="text-xs font-medium text-slate-400">قرضہ دینا ہے</span>
-                <h3 id="loan-payable" class="text-lg md:text-xl font-bold text-orange-400">Rs0.00</h3>
+                <h3 id="loan-payable" class="text-lg md:text-xl font-bold text-orange-400">₨0.00</h3>
                 <p class="text-[10px] text-slate-400 mt-1">Borrowed Payable</p>
             </div>
 
             <div class="glass-card p-4 rounded-2xl border-r-4 border-cyan-500">
                 <span class="text-xs font-medium text-slate-400">قرضہ ملنا ہے</span>
-                <h3 id="loan-receivable" class="text-lg md:text-xl font-bold text-cyan-400">Rs0.00</h3>
+                <h3 id="loan-receivable" class="text-lg md:text-xl font-bold text-cyan-400">₨0.00</h3>
                 <p class="text-[10px] text-slate-400 mt-1">Given Receivable</p>
             </div>
         </div>
@@ -279,49 +280,49 @@
     <!-- ADD ACCOUNT MODAL -->
     <div id="account-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
         <div class="glass-modal w-full max-w-md rounded-2xl p-6 relative shadow-2xl">
-            <button onclick="closeAccountModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+            <button type="button" onclick="closeAccountModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             <h3 class="text-lg font-bold text-white mb-4">نیا اکاؤنٹ / والیٹ شامل کریں</h3>
             
-            <form onsubmit="handleAccountSubmit(event)" class="space-y-4">
+            <div class="space-y-4">
                 <div>
                     <label class="block text-xs font-medium text-slate-300 mb-1">اکاؤنٹ یا والیٹ کا نام (مثلاً Cash, EasyPaisa, Bank)</label>
-                    <input type="text" id="acc-name" required placeholder="مثلاً: Personal Bank, Cash, My Wallet..." class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                    <input type="text" id="acc-name" placeholder="مثلاً: Personal Bank, Cash, My Wallet..." class="w-full glass-input px-3 py-2 rounded-xl text-sm">
                 </div>
 
                 <div>
                     <label class="block text-xs font-medium text-slate-300 mb-1">ابتدائی رقم (Deposit Amount / Balance)</label>
-                    <input type="number" step="0.01" id="acc-balance" required placeholder="0.00" class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                    <input type="number" step="0.01" id="acc-balance" placeholder="0.00" class="w-full glass-input px-3 py-2 rounded-xl text-sm">
                 </div>
 
                 <div class="flex justify-end gap-2 pt-2">
                     <button type="button" onclick="closeAccountModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:bg-slate-800">منسوخ کریں</button>
-                    <button type="submit" class="px-5 py-2 rounded-xl text-xs font-semibold bg-purple-600 hover:bg-purple-500 text-white shadow-lg">اکاؤنٹ محفوظ کریں</button>
+                    <button type="button" onclick="saveNewAccount()" class="px-5 py-2 rounded-xl text-xs font-semibold bg-purple-600 hover:bg-purple-500 text-white shadow-lg">اکاؤنٹ محفوظ کریں</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 
     <!-- TRANSACTION MODAL (Income / Expense) -->
     <div id="tx-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
         <div class="glass-modal w-full max-w-md rounded-2xl p-6 relative shadow-2xl">
-            <button onclick="closeTransactionModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+            <button type="button" onclick="closeTransactionModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             <h3 id="tx-modal-title" class="text-lg font-bold text-white mb-4">لین دین کا اندراج</h3>
             
-            <form id="tx-form" onsubmit="handleTransactionSubmit(event)" class="space-y-4">
+            <div class="space-y-4">
                 <input type="hidden" id="tx-id">
                 
                 <div>
                     <label class="block text-xs font-medium text-slate-300 mb-1">لین دین کی قسم</label>
                     <div class="grid grid-cols-2 gap-2">
                         <button type="button" id="tx-type-income-btn" onclick="setTxModalType('income')" class="py-2 rounded-xl text-xs font-semibold border transition border-emerald-500 bg-emerald-500/20 text-emerald-300">
-                            آمدن (Income)
+                            Income (آمدن)
                         </button>
                         <button type="button" id="tx-type-expense-btn" onclick="setTxModalType('expense')" class="py-2 rounded-xl text-xs font-semibold border transition border-slate-700 text-slate-400">
-                            خرچ (Expense)
+                            Expense (خرچ)
                         </button>
                     </div>
                     <input type="hidden" id="tx-type" value="income">
@@ -329,19 +330,19 @@
 
                 <div>
                     <label id="account-select-label" class="block text-xs font-medium text-slate-300 mb-1">کس اکاؤنٹ / والیٹ سے؟ (پیسے کہاں آئے / کہاں سے لگے)</label>
-                    <select id="tx-account" required class="w-full glass-input px-3 py-2 rounded-xl text-sm text-white">
+                    <select id="tx-account" class="w-full glass-input px-3 py-2 rounded-xl text-sm text-white">
                         <!-- Dynamic Account Options -->
                     </select>
                 </div>
 
                 <div>
                     <label class="block text-xs font-medium text-slate-300 mb-1">رقم (Amount)</label>
-                    <input type="number" step="0.01" id="tx-amount" required placeholder="0.00" class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                    <input type="number" step="0.01" id="tx-amount" placeholder="0.00" class="w-full glass-input px-3 py-2 rounded-xl text-sm">
                 </div>
 
                 <div>
                     <label class="block text-xs font-medium text-slate-300 mb-1">تفصیل (پیسے کہاں سے آئے یا کہاں لگے)</label>
-                    <input type="text" id="tx-desc" required placeholder="مثلاً: تنخواہ، راشن، پٹرول، بل..." class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                    <input type="text" id="tx-desc" placeholder="مثلاً: تنخواہ، راشن، پٹرول، بل..." class="w-full glass-input px-3 py-2 rounded-xl text-sm">
                 </div>
 
                 <div>
@@ -358,26 +359,26 @@
 
                 <div>
                     <label class="block text-xs font-medium text-slate-300 mb-1">تاریخ</label>
-                    <input type="date" id="tx-date" required class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                    <input type="date" id="tx-date" class="w-full glass-input px-3 py-2 rounded-xl text-sm">
                 </div>
 
                 <div class="flex justify-end gap-2 pt-2">
                     <button type="button" onclick="closeTransactionModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:bg-slate-800">منسوخ</button>
-                    <button type="submit" class="px-5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg">محفوظ کریں</button>
+                    <button type="button" onclick="saveNewTransaction()" class="px-5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg">محفوظ کریں</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 
     <!-- LOAN MODAL -->
     <div id="loan-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
         <div class="glass-modal w-full max-w-md rounded-2xl p-6 relative shadow-2xl">
-            <button onclick="closeLoanModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+            <button type="button" onclick="closeLoanModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             <h3 id="loan-modal-title" class="text-lg font-bold text-white mb-4">قرض کا اندراج</h3>
             
-            <form id="loan-form" onsubmit="handleLoanSubmit(event)" class="space-y-4">
+            <div class="space-y-4">
                 <input type="hidden" id="loan-id">
 
                 <div>
@@ -395,17 +396,17 @@
 
                 <div>
                     <label class="block text-xs font-medium text-slate-300 mb-1">شخص کا نام (کس سے لیا / کسے دیا)</label>
-                    <input type="text" id="loan-person" required placeholder="مثلاً: علی احمد، بینک..." class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                    <input type="text" id="loan-person" placeholder="مثلاً: علی احمد، بینک..." class="w-full glass-input px-3 py-2 rounded-xl text-sm">
                 </div>
 
                 <div>
                     <label class="block text-xs font-medium text-slate-300 mb-1">کل رقم</label>
-                    <input type="number" step="0.01" id="loan-amount" required placeholder="0.00" class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                    <input type="number" step="0.01" id="loan-amount" placeholder="0.00" class="w-full glass-input px-3 py-2 rounded-xl text-sm">
                 </div>
 
                 <div>
                     <label class="block text-xs font-medium text-slate-300 mb-1">تاریخ</label>
-                    <input type="date" id="loan-date" required class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                    <input type="date" id="loan-date" class="w-full glass-input px-3 py-2 rounded-xl text-sm">
                 </div>
 
                 <div>
@@ -415,42 +416,42 @@
 
                 <div class="flex justify-end gap-2 pt-2">
                     <button type="button" onclick="closeLoanModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:bg-slate-800">منسوخ</button>
-                    <button type="submit" class="px-5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg">قرض محفوظ کریں</button>
+                    <button type="button" onclick="saveNewLoan()" class="px-5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg">قرض محفوظ کریں</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 
     <!-- REPAYMENT MODAL -->
     <div id="repay-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
         <div class="glass-modal w-full max-w-sm rounded-2xl p-6 relative shadow-2xl">
-            <button onclick="closeRepayModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+            <button type="button" onclick="closeRepayModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             <h3 class="text-lg font-bold text-white mb-1">قرض کی ادائیگی درج کریں</h3>
             <p id="repay-subtitle" class="text-xs text-slate-400 mb-4">ادائیگی یا وصولی درج کریں</p>
             
-            <form onsubmit="handleRepaySubmit(event)" class="space-y-4">
+            <div class="space-y-4">
                 <input type="hidden" id="repay-loan-id">
 
                 <div>
                     <label class="block text-xs font-medium text-slate-300 mb-1">ادائیگی کی رقم</label>
-                    <input type="number" step="0.01" id="repay-amount" required placeholder="0.00" class="w-full glass-input px-3 py-2 rounded-xl text-sm">
-                    <p id="repay-max-hint" class="text-[10px] text-slate-400 mt-1">باقی رقم: Rs0.00</p>
+                    <input type="number" step="0.01" id="repay-amount" placeholder="0.00" class="w-full glass-input px-3 py-2 rounded-xl text-sm">
+                    <p id="repay-max-hint" class="text-[10px] text-slate-400 mt-1">باقی رقم: ₨0.00</p>
                 </div>
 
                 <div>
                     <label class="block text-xs font-medium text-slate-300 mb-1">کس اکاؤنٹ / والیٹ سے ادائیگی کی؟</label>
-                    <select id="repay-account" required class="w-full glass-input px-3 py-2 rounded-xl text-sm text-white">
+                    <select id="repay-account" class="w-full glass-input px-3 py-2 rounded-xl text-sm text-white">
                         <!-- Dynamic Account Options -->
                     </select>
                 </div>
 
                 <div class="flex justify-end gap-2 pt-2">
                     <button type="button" onclick="closeRepayModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:bg-slate-800">منسوخ</button>
-                    <button type="submit" class="px-5 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg">ادائیگی کی تصدیق کریں</button>
+                    <button type="button" onclick="saveNewRepayment()" class="px-5 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg">ادائیگی کی تصدیق کریں</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 
@@ -463,8 +464,8 @@
             <h3 class="text-lg font-bold text-white">تمام ڈیٹا ری سیٹ کریں؟</h3>
             <p class="text-xs text-slate-300">اس سے آپ کے تمام اکاؤنٹس، آمدن، اخراجات اور قرضے پاک ہو جائیں گے۔</p>
             <div class="flex gap-2 justify-center pt-2">
-                <button onclick="closeResetModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 bg-slate-800 hover:bg-slate-700">منسوخ</button>
-                <button onclick="confirmResetAll()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-rose-600 hover:bg-rose-500 text-white">ہاں، سب ختم کریں</button>
+                <button type="button" onclick="closeResetModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 bg-slate-800 hover:bg-slate-700">منسوخ</button>
+                <button type="button" onclick="confirmResetAll()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-rose-600 hover:bg-rose-500 text-white">ہاں، سب ختم کریں</button>
             </div>
         </div>
     </div>
@@ -479,10 +480,11 @@
         };
 
         const CURRENCY_SYMBOLS = {
-            PKR: 'Rs',
+            PKR: '₨',
             INR: '₹',
             USD: '$',
-            EUR: '€'
+            EUR: '€',
+            GBP: '£'
         };
 
         window.onload = function() {
@@ -511,7 +513,7 @@
         }
 
         function formatCurr(amount) {
-            const sym = CURRENCY_SYMBOLS[state.currency] || 'Rs';
+            const sym = CURRENCY_SYMBOLS[state.currency] || '₨';
             return `${sym}${parseFloat(amount || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
         }
 
@@ -532,9 +534,7 @@
                 if (t.type === 'expense') totalExpense += t.amount;
             });
 
-            // Calculate total balance from all accounts
             let totalBalance = state.accounts.reduce((sum, acc) => sum + (acc.balance || 0), 0);
-
             const savingsRate = totalIncome > 0 ? Math.max(0, ((totalIncome - totalExpense) / totalIncome) * 100) : 0;
 
             let loanPayable = 0;
@@ -572,12 +572,14 @@
             document.getElementById('account-modal').classList.add('hidden');
         }
 
-        function handleAccountSubmit(e) {
-            e.preventDefault();
+        function saveNewAccount() {
             const name = document.getElementById('acc-name').value.trim();
             const balance = parseFloat(document.getElementById('acc-balance').value) || 0;
 
-            if (!name) return;
+            if (!name) {
+                alert("براہ کرم اکاؤنٹ کا نام درج کریں!");
+                return;
+            }
 
             const newAcc = {
                 id: Date.now().toString(),
@@ -614,7 +616,7 @@
                         <h4 class="font-bold text-sm text-white">${acc.name}</h4>
                         <p class="text-xs font-semibold text-emerald-400 mt-0.5">${formatCurr(acc.balance)}</p>
                     </div>
-                    <button onclick="deleteAccount('${acc.id}')" class="text-slate-500 hover:text-rose-400 p-1 text-xs" title="حذف کریں">
+                    <button type="button" onclick="deleteAccount('${acc.id}')" class="text-slate-500 hover:text-rose-400 p-1 text-xs" title="حذف کریں">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
@@ -671,8 +673,7 @@
             }
         }
 
-        function handleTransactionSubmit(e) {
-            e.preventDefault();
+        function saveNewTransaction() {
             const id = document.getElementById('tx-id').value || Date.now().toString();
             const type = document.getElementById('tx-type').value;
             const accountId = document.getElementById('tx-account').value;
@@ -681,13 +682,21 @@
             const category = document.getElementById('tx-category').value;
             const date = document.getElementById('tx-date').value;
 
-            const account = state.accounts.find(a => a.id === accountId);
-            if (!account) {
-                alert("براہ کرم صحیح اکاؤنٹ کا انتخاب کریں!");
+            if (!accountId) {
+                alert("براہ کرم اکاؤنٹ منتخب کریں!");
+                return;
+            }
+            if (amount <= 0) {
+                alert("براہ کرم درست رقم درج کریں!");
                 return;
             }
 
-            // Adjust account balance
+            const account = state.accounts.find(a => a.id === accountId);
+            if (!account) {
+                alert("اکاؤنٹ نہیں ملا!");
+                return;
+            }
+
             if (type === 'income') {
                 account.balance += amount;
             } else {
@@ -736,7 +745,7 @@
                         <td class="p-2.5 text-slate-400 text-[11px]">${t.date}</td>
                         <td class="p-2.5 text-left ${amtClass}">${sign}${formatCurr(t.amount)}</td>
                         <td class="p-2.5 text-center">
-                            <button onclick="deleteTransaction('${t.id}')" class="p-1 text-slate-400 hover:text-rose-400">
+                            <button type="button" onclick="deleteTransaction('${t.id}')" class="p-1 text-slate-400 hover:text-rose-400">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </td>
@@ -754,7 +763,6 @@
             if (tx && tx.accountId) {
                 const acc = state.accounts.find(a => a.id === tx.accountId);
                 if (acc) {
-                    // Revert balance
                     if (tx.type === 'income') acc.balance -= tx.amount;
                     else acc.balance += tx.amount;
                 }
@@ -792,14 +800,18 @@
             }
         }
 
-        function handleLoanSubmit(e) {
-            e.preventDefault();
+        function saveNewLoan() {
             const id = document.getElementById('loan-id').value || Date.now().toString();
             const type = document.getElementById('loan-type').value;
             const person = document.getElementById('loan-person').value.trim();
             const amount = parseFloat(document.getElementById('loan-amount').value) || 0;
             const date = document.getElementById('loan-date').value;
             const note = document.getElementById('loan-note').value.trim();
+
+            if (!person || amount <= 0) {
+                alert("براہ کرم نام اور درست رقم درج کریں!");
+                return;
+            }
 
             const loanObj = { id, type, person, amount, repaid: 0, date, note };
             state.loans.unshift(loanObj);
@@ -835,7 +847,7 @@
                                 <h4 class="font-bold text-sm text-white mt-1">${loan.person}</h4>
                                 <p class="text-[10px] text-slate-400">${loan.date} ${loan.note ? '• ' + loan.note : ''}</p>
                             </div>
-                            <button onclick="deleteLoan('${loan.id}')" class="text-slate-400 hover:text-rose-400 p-1 text-xs">
+                            <button type="button" onclick="deleteLoan('${loan.id}')" class="text-slate-400 hover:text-rose-400 p-1 text-xs">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </div>
@@ -856,7 +868,7 @@
                         </div>
 
                         ${remaining > 0 ? `
-                            <button onclick="openRepayModal('${loan.id}')" class="w-full text-xs bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-300 border border-emerald-500/30 py-1.5 rounded-md transition font-medium">
+                            <button type="button" onclick="openRepayModal('${loan.id}')" class="w-full text-xs bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-300 border border-emerald-500/30 py-1.5 rounded-md transition font-medium">
                                 ادائیگی درج کریں
                             </button>
                         ` : '<div class="text-emerald-400 text-xs text-center font-semibold"><i class="fa-solid fa-circle-check"></i> مکمل ادا ہو گیا</div>'}
@@ -897,8 +909,7 @@
             document.getElementById('repay-modal').classList.add('hidden');
         }
 
-        function handleRepaySubmit(e) {
-            e.preventDefault();
+        function saveNewRepayment() {
             const loanId = document.getElementById('repay-loan-id').value;
             const repayAmt = parseFloat(document.getElementById('repay-amount').value) || 0;
             const accountId = document.getElementById('repay-account').value;
@@ -906,16 +917,18 @@
             const loan = state.loans.find(l => l.id === loanId);
             const account = state.accounts.find(a => a.id === accountId);
 
-            if (!loan || !account || repayAmt <= 0) return;
+            if (!loan || !account || repayAmt <= 0) {
+                alert("براہ کرم درست رقم اور اکاؤنٹ منتخب کریں!");
+                return;
+            }
 
             loan.repaid = (loan.repaid || 0) + repayAmt;
 
-            // Automatically update account balance and add transaction record
             const isBorrowed = loan.type === 'borrowed';
             if (isBorrowed) {
-                account.balance -= repayAmt; // Repaying borrowed loan reduces account balance
+                account.balance -= repayAmt;
             } else {
-                account.balance += repayAmt; // Receiving given loan increases account balance
+                account.balance += repayAmt;
             }
 
             const today = new Date().toISOString().split('T')[0];
